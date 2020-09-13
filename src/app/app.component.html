@@ -5,11 +5,11 @@
     </h1>
 </div>
 <div style="text-align:center">
-    <a routerLink="/login" routerLinkActive="active">Sign in</a>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/food" routerLinkActive="active">Buy Food</a>
-    <a routerLink="/shopping-cart" routerLinkActive="active">Shopping Cart</a>
-    <a routerLink="/admin" routerLinkActive="active">Admin pannel</a>
-    <a routerLink="/logout" routerLinkActive="active">Sign out</a>
+    <a routerLink="/login" routerLinkActive="active" [ngClass]="'margin'">Sign in</a>
+    <a routerLink="/home" routerLinkActive="active" [ngClass]="'margin'">Home</a>
+    <a routerLink="/food" routerLinkActive="active" [ngClass]="'margin'">Buy Food</a>
+    <a routerLink="/shopping-cart" routerLinkActive="active" [ngClass]="'margin'">Shopping Cart</a>
+    <a routerLink="/admin" routerLinkActive="active" [ngClass]="'margin'">Admin pannel</a>
+    <a routerLink="/logout" routerLinkActive="active" [ngClass]="'margin'">Sign out</a>
 </div>
 <router-outlet></router-outlet>

@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user-service/user.service';
+import { UserInfo } from '../../models/user-info';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  user: UserInfo;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  test(): any {
+    this.userService.httpGetUserTest().subscribe(e => {
+      console.log(e);
+    });
   }
 
 }
