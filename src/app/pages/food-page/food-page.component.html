@@ -1,1 +1,18 @@
-<p [ngClass]="'center'">food-page works!</p>
+<div style="text-align:center">
+    <h2>Choose category</h2>
+    
+    <div>
+        <button (click)='getFoodByTypeBreakfast()' [ngClass]="'margin'">Breakfast</button>
+        <button (click)='getFoodByTypeDinner()' [ngClass]="'margin'">Dinner</button>
+        <button (click)='getFoodByTypeSupper()' [ngClass]="'margin'">Supper</button>
+    </div>
+
+    <div>
+        <h3>Products</h3>
+        <ng-container *ngFor='let food of foods'>
+                <li>
+                    name: {{food.name}}, price: {{food.price}}
+                </li>
+        </ng-container>
+    </div>
+</div>

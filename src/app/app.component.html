@@ -1,15 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-        Restaurant
-    </h1>
-</div>
-<div style="text-align:center">
-    <a routerLink="/login" routerLinkActive="active" [ngClass]="'margin'">Sign in</a>
-    <a routerLink="/home" routerLinkActive="active" [ngClass]="'margin'">Home</a>
-    <a routerLink="/food" routerLinkActive="active" [ngClass]="'margin'">Buy Food</a>
-    <a routerLink="/shopping-cart" routerLinkActive="active" [ngClass]="'margin'">Shopping Cart</a>
-    <a routerLink="/admin" routerLinkActive="active" [ngClass]="'margin'">Admin pannel</a>
-    <a routerLink="/logout" routerLinkActive="active" [ngClass]="'margin'">Sign out</a>
-</div>
-<router-outlet></router-outlet>
+
+<body>
+    <div style="text-align:center">
+        <h1>
+            Restaurant
+        </h1>
+    </div>
+    <div style="text-align:center">
+        <a routerLink="/login" routerLinkActive="active" [ngClass]="'margin'">Sign in</a>
+        <a routerLink="/home" routerLinkActive="active" [ngClass]="'margin'">Home</a>
+        <a routerLink="/food" routerLinkActive="active" [ngClass]="'margin'">Buy Food</a>
+        <a routerLink="/shopping-cart" routerLinkActive="active" [ngClass]="'margin'">Shopping Cart</a>
+        <a routerLink="/admin" routerLinkActive="active" [ngClass]="'margin'">Admin pannel</a>
+        <a routerLink="/logout" routerLinkActive="active" [ngClass]="'margin'">Sign out</a>
+    </div>
+    <router-outlet></router-outlet>
+</body>

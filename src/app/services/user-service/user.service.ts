@@ -10,15 +10,10 @@ export class UserService {
 
   userRoleObs = new BehaviorSubject<UserInfo>(null);
 
-  constructor(private http: HttpClient) {
-    // this.httpGetUser().subscribe(e => {
-    //   this.userRoleObs.next(e);
-    //   console.log(e);
-    // });
-  }
+  constructor(private http: HttpClient) { }
 
-  httpGetUser(): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/api/userinfo');
+  httpGetUsers(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/user');
   }
 
 }
