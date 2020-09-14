@@ -1,6 +1,5 @@
 import { Food } from './../../models/food';
 import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
-import { User } from './../../models/user';
 import { FoodService } from './../../services/food-service/food.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodPageComponent implements OnInit {
 
-  foods: Array<User>;
+  foods: Array<Food>;
 
   constructor(private foodService: FoodService, private shoppingCartService: ShoppingCartService) { }
 
@@ -39,9 +38,13 @@ export class FoodPageComponent implements OnInit {
     });
   }
 
-  addToShoppingCart(food: Food): void {
+  addFoodToShoppingCart(food: Food): void {
     this.shoppingCartService.addFoodToShoppingCart(food);
     console.log(this.shoppingCartService.foods.getValue());
+  }
+
+  checkIfFoodInShoppingCart(food: Food): boolean {
+    return this.shoppingCartService.checkIfFoodInShoppingCart(food);
   }
 
 }

@@ -10,15 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class ShoppingCartPageComponent implements OnInit {
 
   foods: Array<Food>;
+  price: number;
 
   constructor(private shoppingCartService: ShoppingCartService) {
     shoppingCartService.foods.subscribe(e => {
       this.foods = e;
-      console.log(this.foods);
+    });
+    shoppingCartService.price.subscribe(e => {
+      this.price = e;
     });
   }
 
   ngOnInit(): void {
+  }
+
+  removeFoodFromShoppingCart(food: Food): void {
+    this.shoppingCartService.removeFoodFromShoppingCart(food);
   }
 
 }

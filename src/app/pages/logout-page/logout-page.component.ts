@@ -10,6 +10,7 @@ export class LogoutPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.location.href = 'http://localhost:8080/logout';
   }
 
 }
