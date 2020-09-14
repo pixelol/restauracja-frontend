@@ -22,25 +22,59 @@ export class ShoppingCartService {
   }
 
   addFoodToShoppingCart(food: Food): void {
-    const updateShoppingCart: Array<Food> = this.foods.getValue();
-    const updatePrice: string = this.price.getValue();
+    const oldShoppingCart: Array<Food> = this.foods.getValue();
+    const oldPrice: string = this.price.getValue();
+    const sum = this.addTwoNumbers(oldPrice, food.price);
 
     if (!this.checkIfFoodInShoppingCart(food)) {
-      updateShoppingCart.push(food);
-      this.foods.next(updateShoppingCart);
-      this.price.next(updatePrice + +food.price);
+      oldShoppingCart.push(food);
+      this.foods.next(oldShoppingCart);
+      this.price.next(sum);
     }
   }
 
   removeFoodFromShoppingCart(food: Food): void {
-    const updatePrice: string = this.price.getValue();
+    const oldPrice: string = this.price.getValue();
 
     this.foods.next(this.foods.getValue().filter(e => {
       if (food.id !== e.id) {
         return true;
       } else {
-        this.price.next(updatePrice + food.price);  // <======= zamień + na -
+        this.price.next(oldPrice + food.price);  // <======= zamień + na - i stworz funkcje do odejmowania
       }
     }));
+  }
+
+  addTwoNumbers(firstNumber: string, secondNumber: string): string {
+
+    const firstNumberSplitted = firstNumber.split('.', 2);
+    const secondNumberSplitted = secondNumber.split('.', 2);
+
+    let leftPart = +firstNumberSplitted[0] + +secondNumberSplitted[0];
+    let rightPart = +firstNumberSplitted[1] + +secondNumberSplitted[1];
+
+    let finalLeftPart: string;
+    let finalRightPart: string;
+
+    if (rightPart >= 100) {
+      leftPart += 1;
+      rightPart -= 100;
+      finalLeftPart = leftPart + '';
+
+      if (rightPart < 10) {
+        finalRightPart = '0' + rightPart;
+      } else {
+        finalRightPart = rightPart + '';
+      }
+    } else {
+      finalLeftPart = leftPart + '';
+      if (rightPart < 10) {
+        finalRightPart = '0' + rightPart;
+      } else {
+        finalRightPart = rightPart + '';
+      }
+    }
+
+    return finalLeftPart + '.' + finalRightPart;
   }
 }

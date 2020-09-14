@@ -28,10 +28,8 @@ export class ShoppingCartPageComponent implements OnInit {
     this.shoppingCartService.removeFoodFromShoppingCart(food);
   }
 
-  addTwoNumbers(firtsNumber: string, secondNumber: string): void {
-    firtsNumber = '13.13';
-    secondNumber = '12.12';
-
+  subtractTwoNumbers(firstNumber: string, secondNumber: string): string {
+    return null;
   }
 
 }
