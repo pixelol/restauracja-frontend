@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class ShoppingCartService {
   foods = new BehaviorSubject<Array<Food>>([]);
-  price = new BehaviorSubject<number>(0);
+  price = new BehaviorSubject<string>('0.00');
 
   constructor() { }
 
@@ -23,7 +23,7 @@ export class ShoppingCartService {
 
   addFoodToShoppingCart(food: Food): void {
     const updateShoppingCart: Array<Food> = this.foods.getValue();
-    const updatePrice: number = this.price.getValue();
+    const updatePrice: string = this.price.getValue();
 
     if (!this.checkIfFoodInShoppingCart(food)) {
       updateShoppingCart.push(food);
@@ -33,13 +33,13 @@ export class ShoppingCartService {
   }
 
   removeFoodFromShoppingCart(food: Food): void {
-    const updatePrice: number = this.price.getValue();
+    const updatePrice: string = this.price.getValue();
 
     this.foods.next(this.foods.getValue().filter(e => {
       if (food.id !== e.id) {
         return true;
       } else {
-        this.price.next(updatePrice - +food.price);
+        this.price.next(updatePrice + food.price);  // <======= zamień + na -
       }
     }));
   }

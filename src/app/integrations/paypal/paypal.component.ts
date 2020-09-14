@@ -11,7 +11,7 @@ declare let paypal: any;
 })
 export class PaypalComponent implements OnInit, AfterViewChecked {
 
-  price: number;
+  price: string;
 
   addScript: boolean;
   paypalConfig = {

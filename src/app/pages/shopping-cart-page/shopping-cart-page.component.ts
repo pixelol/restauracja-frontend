@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShoppingCartPageComponent implements OnInit {
 
   foods: Array<Food>;
-  price: number;
+  price: string;
 
   constructor(private shoppingCartService: ShoppingCartService) {
     shoppingCartService.foods.subscribe(e => {
@@ -26,6 +26,12 @@ export class ShoppingCartPageComponent implements OnInit {
 
   removeFoodFromShoppingCart(food: Food): void {
     this.shoppingCartService.removeFoodFromShoppingCart(food);
+  }
+
+  addTwoNumbers(firtsNumber: string, secondNumber: string): void {
+    firtsNumber = '13.13';
+    secondNumber = '12.12';
+
   }
 
 }
