@@ -11,7 +11,11 @@
         <h3>Products</h3>
         <ng-container *ngFor='let food of foods'>
                 <li>
-                    name: {{food.name}}, price: {{food.price}}
+                    type: {{food.type}} | 
+                    name: {{food.name}} | 
+                    price: {{food.price}} | 
+                    status: {{food.status}} | 
+                    <button (click)='addToShoppingCart(food)'>Add to shopping cart</button>
                 </li>
         </ng-container>
     </div>
