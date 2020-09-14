@@ -12,6 +12,8 @@
                     <button (click)='removeFoodFromShoppingCart(food)'>Remove</button>
                 </li>
         </ng-container>
-        {{price}}
+        <h4 *ngIf='price'>Total price: {{price}}</h4>
     </div>
+
+    <app-paypal></app-paypal>
 </div>

@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
 import { PaypalService } from './../paypal-service/paypal.service';
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 
@@ -10,7 +11,7 @@ declare let paypal: any;
 })
 export class PaypalComponent implements OnInit, AfterViewChecked {
 
-  paypalButtonCss = 'paypalButtonHide';
+  price: number;
 
   addScript: boolean;
   paypalConfig = {
@@ -19,7 +20,7 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: 0
+            value: this.price
           }
         }]
       });
@@ -33,8 +34,11 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
     }
   };
 
-  constructor(private paypalService: PaypalService) {
+  constructor(private paypalService: PaypalService, private shoppingCartService: ShoppingCartService) {
     this.addScript = false;
+    shoppingCartService.price.subscribe(e => {
+      this.price = e;
+    });
   }
 
   ngOnInit(): void {
@@ -53,8 +57,7 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
     return new Promise((resolve, reject) => {
       const scripttagElement = document.createElement('script'); // <script src =""></script>
       scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=' +
-        'client id' +
-        '&currency=EUR';
+        ''; /* <=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=# USUŃ */
       scripttagElement.onload = resolve;
       document.body.appendChild(scripttagElement);
     });

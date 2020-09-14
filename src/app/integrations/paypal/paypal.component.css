@@ -6,13 +6,3 @@
     top: 20%;
     right: 15%;
 }
-
-.paypalButtonHide{
-    height: 0%;
-    width: 0%;
-
-    visibility: hidden;
-    position: absolute;
-    top: 20%;
-    right: 15%;
-}
