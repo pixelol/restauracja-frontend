@@ -2,7 +2,6 @@
     <h2>Shopping cart</h2>
 
     <div>
-        <h3>Products to buy</h3>
         <ng-container *ngFor='let food of foods'>
                 <li>
                     type: {{food.type}} | 
@@ -13,7 +12,7 @@
                 </li>
         </ng-container>
         <h4>Total price: {{price}}</h4>
-        <button>Calculate subtract!</button>
+        <!-- <button (click)='subtractTwoNumbers("1.00","0.02")'>Calculate subtract!</button> -->
     </div>
 
     <app-paypal></app-paypal>

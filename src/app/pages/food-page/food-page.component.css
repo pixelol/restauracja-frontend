@@ -2,17 +2,3 @@
     margin-right: 15px;
     background-color: rgb(238, 216, 190);
 }
-
-ul {
-    /* Use flex boxes to align li items */
-    display: flex;
-    justify-content: space-around;
-    /* Remove default padding from major browsers */
-    padding: 0;
-    /* Hide the default decorations for li items */
-    list-style: none;
-}
-ul > li {
-    /* Display the elements in one line */
-    display: inline-block;
-}
