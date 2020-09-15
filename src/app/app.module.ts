@@ -7,6 +7,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { PaypalComponent } from './integrations/paypal/paypal.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { PaypalComponent } from './integrations/paypal/paypal.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,19 +13,19 @@ export class FoodService {
 
   HttpGetFoodByType(type: string): any {
     const param = new HttpParams().set('type', type + '');
-    return this.http.get<Array<User>>('http://localhost:8080/api/food/type', { params: param });
+    return this.http.get<Array<User>>('/api/food/type', { params: param });
   }
 
   HttpCreateFood(food: Food): Observable<any> {
-    return this.http.post<Food>('http://localhost:8080/api/food', food);
+    return this.http.post<Food>('/api/food', food);
   }
 
   HttpUpdateFood(food: Food): Observable<any> {
-    return this.http.put<Food>('http://localhost:8080/api/food', food);
+    return this.http.put<Food>('/api/food', food);
   }
 
   HttpDeleteFood(food: Food): Observable<any> {
     const param = new HttpParams().set('id', food.id + '');
-    return this.http.delete<Food>('http://localhost:8080/api/food', { params: param });
+    return this.http.delete<Food>('/api/food', { params: param });
   }
 }

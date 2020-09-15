@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, XhrFactory } from '@angular/common/http';
 import { UserInfo } from '../../models/user-info';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   httpGetUsers(): Observable<any> {
-    return this.http.get<any>('http://localhost:8080/api/user');
+    return this.http.get<any>('/api/user');
   }
-
 }

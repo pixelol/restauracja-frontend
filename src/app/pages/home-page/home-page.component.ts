@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
 
   user: UserInfo;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
