@@ -1,6 +1,6 @@
 <div style="text-align:center">
     <h2>Choose category</h2>
-    
+
     <div>
         <button (click)='getFoodByTypeBreakfast()' [ngClass]="'margin'">Breakfast</button>
         <button (click)='getFoodByTypeDinner()' [ngClass]="'margin'">Dinner</button>
@@ -10,14 +10,43 @@
     <div>
         <h3>Products</h3>
         <ng-container *ngFor='let food of foods'>
-                <li>
-                    type: {{food.type}} | 
-                    name: {{food.name}} | 
-                    price: {{food.price}} | 
-                    status: {{food.status}} | 
-                    <button>Update</button>
-                    <button>Delete</button>
-                </li>
+            <li>
+                id: {{food.id}} |
+                type: {{food.type}} |
+                name: {{food.name}} |
+                price: {{food.price}} |
+                status: {{food.status}} |
+                <button (click)='updateFood(food)'>Update</button>
+                <button (click)='deleteFood(food)'>Delete</button>
+            </li>
         </ng-container>
     </div>
+
+    <div [ngClass]="'createPannel'">
+        <h4>Add product</h4>
+    </div>
+
+    <div *ngIf='showUpdatePannel' [ngClass]="'updatePannel'">
+        <h4>Update product</h4>
+        <div>
+            <div>
+                Select type:
+                <button [ngClass]="'marginBottom'" (click)='setFoodType("breakfast")'>Breakfast</button>
+                <button [ngClass]="'marginBottom'" (click)='setFoodType("dinner")'>Dinner</button>
+                <button [ngClass]="'marginBottom'" (click)='setFoodType("supper")'>Supper</button><br>
+                Type:
+                <input [ngClass]="'marginBottom'" [(ngModel)]='updateTypeInput' [readonly]='true'><br>
+                Name:
+                <input [ngClass]="'marginBottom'" [(ngModel)]='updateNameInput'><br>
+                Price:
+                <input [ngClass]="'leftSidePrice'" [(ngModel)]='updateLeftSidePriceInput' type="number"> zł
+                <input [ngClass]="'rightSidePrice'" [(ngModel)]='updateRightSidePriceInput' type="number"> gr
+                <br>{{updateId}}
+                <br>{{updateStatus}}
+            </div><br><br>
+            <button (click)='back()' [ngClass]="'backSave'">Back</button>
+            <button (click)='save()'>Save</button>
+        </div>
+    </div>
+
 </div>

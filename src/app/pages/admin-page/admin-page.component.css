@@ -2,3 +2,31 @@
     margin-right: 15px;
     background-color: rgb(238, 216, 190);
 }
+
+.marginBottom {
+    margin-bottom: 10px;
+}
+
+.leftSidePrice {
+    width: 60px;
+}
+
+.rightSidePrice {
+    width: 45px;
+}
+
+.createPannel {
+    position: absolute;
+    top: 27%;
+    left: 5%;
+}
+
+.updatePannel {
+    position: absolute;
+    top: 27%;
+    right: 5%;
+}
+
+.backSave {
+    margin-right: 10px;
+}
