@@ -16,7 +16,7 @@ export class FoodService {
     return this.http.get<Array<User>>('http://localhost:8080/api/food/type', { params: param });
   }
 
-  HttpAddFood(food: Food): Observable<any> {
+  HttpCreateFood(food: Food): Observable<any> {
     return this.http.post<Food>('http://localhost:8080/api/food', food);
   }
 

@@ -23,11 +23,30 @@
     </div>
 
     <div [ngClass]="'createPannel'">
-        <h4>Add product</h4>
+        <h4>Create product</h4>
+
+        <div>
+            <div>
+                Select type:
+                <button [ngClass]="'marginBottom'" (click)='setFoodTypeForCreate("breakfast")'>Breakfast</button>
+                <button [ngClass]="'marginBottom'" (click)='setFoodTypeForCreate("dinner")'>Dinner</button>
+                <button [ngClass]="'marginBottom'" (click)='setFoodTypeForCreate("supper")'>Supper</button><br>
+                Type:
+                <input [ngClass]="'marginBottom'" [(ngModel)]='createTypeInput' [readonly]='true'><br>
+                Name:
+                <input [ngClass]="'marginBottom'" [(ngModel)]='createNameInput'><br>
+                Price:
+                <input [ngClass]="'leftSidePrice'" [(ngModel)]='createLeftSidePriceInput' type="number"> zł
+                <input [ngClass]="'rightSidePrice'" [(ngModel)]='createRightSidePriceInput' type="number"> gr
+            </div><br><br>
+            <button (click)='backForCreate()' [ngClass]="'backSave'">Clear</button>
+            <button (click)='saveForCreate()'>Create</button>
+        </div>
     </div>
 
     <div *ngIf='showUpdatePannel' [ngClass]="'updatePannel'">
         <h4>Update product</h4>
+
         <div>
             <div>
                 Select type:
@@ -41,8 +60,6 @@
                 Price:
                 <input [ngClass]="'leftSidePrice'" [(ngModel)]='updateLeftSidePriceInput' type="number"> zł
                 <input [ngClass]="'rightSidePrice'" [(ngModel)]='updateRightSidePriceInput' type="number"> gr
-                <br>{{updateId}}
-                <br>{{updateStatus}}
             </div><br><br>
             <button (click)='back()' [ngClass]="'backSave'">Back</button>
             <button (click)='save()'>Save</button>
