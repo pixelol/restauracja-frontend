@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div *ngIf='userInfo&&userInfo.role==="[ROLE_ADMIN]"' style="text-align:center">
     <h2>Choose category</h2>
 
     <div>
@@ -64,4 +64,8 @@
         </div>
     </div>
 
+</div>
+
+<div *ngIf='userInfo&&userInfo.role!=="[ROLE_ADMIN]"'>
+    <br><h3>You don't have access to this pannel !</h3>
 </div>

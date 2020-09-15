@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user-service/user.service';
+import { UserInfo } from './../../models/user-info';
 import { FoodService } from './../../services/food-service/food.service';
 import { Component, OnInit } from '@angular/core';
 import { Food } from 'src/app/models/food';
@@ -10,6 +12,7 @@ import { Food } from 'src/app/models/food';
 export class AdminPageComponent implements OnInit {
 
   foods: Array<Food>;
+  userInfo: UserInfo;
 
   showUpdatePannel: boolean;
 
@@ -25,7 +28,11 @@ export class AdminPageComponent implements OnInit {
   createLeftSidePriceInput: number;
   createRightSidePriceInput: number;
 
-  constructor(private foodService: FoodService) { }
+  constructor(private foodService: FoodService, private userService: UserService) {
+    userService.userRoleObs.subscribe(e => {
+      this.userInfo = e;
+    });
+  }
 
   ngOnInit(): void {
   }

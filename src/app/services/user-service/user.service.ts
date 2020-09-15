@@ -11,9 +11,13 @@ export class UserService {
 
   userRoleObs = new BehaviorSubject<UserInfo>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.httpGetUsers().subscribe(e => {
+      this.userRoleObs.next(e);
+    });
+  }
 
   httpGetUsers(): Observable<any> {
-    return this.http.get<any>('/api/user');
+    return this.http.get<any>('/api/userinfo');
   }
 }
