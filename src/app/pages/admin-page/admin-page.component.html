@@ -11,12 +11,10 @@
         <h3>Products</h3>
         <ng-container *ngFor='let food of foods'>
             <li>
-                id: {{food.id}} |
-                type: {{food.type}} |
                 name: {{food.name}} |
                 price: {{food.price}} |
                 status: {{food.status}} |
-                <button (click)='updateFood(food)'>Update</button>
+                <button *ngIf='food.status==="dostepny"' (click)='updateFood(food)'>Update</button>
                 <button (click)='deleteFood(food)'>Delete</button>
             </li>
         </ng-container>

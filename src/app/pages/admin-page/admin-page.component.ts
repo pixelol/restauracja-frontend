@@ -109,8 +109,7 @@ export class AdminPageComponent implements OnInit {
       return;
     }
 
-    if (this.updateLeftSidePriceInput < 0 || this.updateLeftSidePriceInput >= 100
-      || this.updateLeftSidePriceInput == null) {
+    if (this.updateLeftSidePriceInput < 0 || this.updateLeftSidePriceInput == null) {
       alert('Wrong price !');
       return;
     }
@@ -164,8 +163,7 @@ export class AdminPageComponent implements OnInit {
       return;
     }
 
-    if (this.createLeftSidePriceInput < 0 || this.createLeftSidePriceInput >= 100
-      || this.createLeftSidePriceInput == null) {
+    if (this.createLeftSidePriceInput < 0 || this.createLeftSidePriceInput == null) {
       alert('Wrong price !');
       return;
     }

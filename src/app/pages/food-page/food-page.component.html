@@ -10,11 +10,9 @@
     <div>
         <h3>Products</h3>
         <ng-container *ngFor='let food of foods'>
-                <li *ngIf='!checkIfFoodInShoppingCart(food)'>
-                    type: {{food.type}} | 
+                <li *ngIf='!checkIfFoodInShoppingCart(food)&&food.status==="dostepny"'>
                     name: {{food.name}} | 
                     price: {{food.price}} | 
-                    status: {{food.status}} | 
                     <button (click)='addFoodToShoppingCart(food)'>Add to shopping cart</button>
                 </li>
         </ng-container>
