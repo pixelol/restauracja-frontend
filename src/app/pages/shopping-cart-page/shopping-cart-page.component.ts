@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user-service/user.service';
+import { UserInfo } from './../../models/user-info';
 import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
 import { Food } from './../../models/food';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +13,17 @@ export class ShoppingCartPageComponent implements OnInit {
 
   foods: Array<Food>;
   price: string;
+  userInfo: UserInfo;
 
-  constructor(private shoppingCartService: ShoppingCartService) {
+  constructor(private shoppingCartService: ShoppingCartService, private userService: UserService) {
     shoppingCartService.foods.subscribe(e => {
       this.foods = e;
     });
     shoppingCartService.price.subscribe(e => {
       this.price = e;
+    });
+    userService.userRoleObs.subscribe(e => {
+      this.userInfo = e;
     });
   }
 

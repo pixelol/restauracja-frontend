@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div *ngIf='userInfo' style="text-align:center">
     <h2>Choose category</h2>
     
     <div>
@@ -17,4 +17,9 @@
                 </li>
         </ng-container>
     </div>
+</div>
+
+<div *ngIf='!userInfo'>
+    <h2>Food page</h2>
+    <h3>Sign in to use the application.</h3>
 </div>

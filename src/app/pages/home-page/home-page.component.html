@@ -1,5 +1,21 @@
-<div style="text-align:center">
+<div *ngIf='userInfo' style="text-align:center">
     <h2>Home page</h2>
     <h3>Welcome to application!</h3>
 </div>
 
+<div *ngIf='!userInfo'>
+    <h2>Home page</h2>
+    <h3>Sign in to use the application.</h3>
+</div>
+
+<div *ngIf='userInfo && userInfo.role==="[ROLE_USER]"'>
+    <br><br>Access role: user
+</div>
+
+<div *ngIf='userInfo && userInfo.role==="[ROLE_FACEBOOK_USER]"'>
+    Access role: facebook user
+</div>
+
+<div *ngIf='userInfo && userInfo.role==="[ROLE_ADMIN]"'>
+    Access role: admin
+</div>

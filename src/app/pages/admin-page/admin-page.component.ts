@@ -37,6 +37,12 @@ export class AdminPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getFoodByType(type: string): any {
+    this.foodService.HttpGetFoodByType(type).subscribe(e => {
+      this.foods = e;
+    });
+  }
+
   getFoodByTypeBreakfast(): any {
     const type = 'breakfast';
     this.foodService.HttpGetFoodByType(type).subscribe(e => {
@@ -185,5 +191,10 @@ export class AdminPageComponent implements OnInit {
       console.log(e);
     });
     this.back();
+  }
+
+  methodSaveAndGetFoodByType(type: string): void {
+    this.getFoodByType(type);
+    this.save();
   }
 }

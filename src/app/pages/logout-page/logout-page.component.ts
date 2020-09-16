@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user-service/user.service';
+import { UserInfo } from './../../models/user-info';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutPageComponent implements OnInit {
 
-  constructor() { }
+  userInfo: UserInfo;
+
+  constructor(private userService: UserService) {
+    userService.userRoleObs.subscribe(e => {
+      this.userInfo = e;
+    });
+  }
 
   ngOnInit(): void {
-    window.location.href = 'http://localhost:8080/logout';
+    if (this.userInfo) {
+      window.location.href = 'http://localhost:8080/logout';
+    }
   }
 
 }

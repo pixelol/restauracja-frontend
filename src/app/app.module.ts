@@ -8,6 +8,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaypalComponent } from './integrations/paypal/paypal.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ShoppingDoneComponent } from './pages/shopping-done/shopping-done.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     routingComponents,
     PaypalComponent,
+    ShoppingDoneComponent,
   ],
   imports: [
     BrowserModule,

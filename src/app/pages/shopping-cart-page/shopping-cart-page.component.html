@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div *ngIf='userInfo' style="text-align:center">
     <h2>Shopping cart</h2>
 
     <div>
@@ -15,4 +15,9 @@
     </div>
 
     <app-paypal></app-paypal>
+</div>
+
+<div *ngIf='!userInfo'>
+    <h2>Shopping cart page</h2>
+    <h3>Sign in to use the application.</h3>
 </div>

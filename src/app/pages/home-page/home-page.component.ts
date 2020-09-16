@@ -11,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  user: UserInfo;
+  userInfo: UserInfo;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    userService.userRoleObs.subscribe(e => {
+      this.userInfo = e;
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -60,7 +60,7 @@
                 <input [ngClass]="'rightSidePrice'" [(ngModel)]='updateRightSidePriceInput' type="number"> gr
             </div><br><br>
             <button (click)='back()' [ngClass]="'backSave'">Back</button>
-            <button (click)='save()'>Save</button>
+            <button (click)='methodSaveAndGetFoodByType(updateTypeInput)'>Save</button>
         </div>
     </div>
 
@@ -68,4 +68,9 @@
 
 <div *ngIf='userInfo&&userInfo.role!=="[ROLE_ADMIN]"'>
     <br><h3>You don't have access to this pannel !</h3>
+</div>
+
+<div *ngIf='!userInfo'>
+    <h2>Admin page</h2>
+    <h3>Sign in to use the application.</h3>
 </div>
