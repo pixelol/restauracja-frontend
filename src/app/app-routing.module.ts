@@ -1,3 +1,4 @@
+import { ShoppingDoneComponent } from './pages/shopping-done/shopping-done.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'food', component: FoodPageComponent },
   { path: 'shopping-cart', component: ShoppingCartPageComponent },
+  { path: 'shopping-done', component: ShoppingDoneComponent },
   { path: 'admin', component: AdminPageComponent },
   { path: 'logout', component: LogoutPageComponent },
 
@@ -24,11 +26,13 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
 export const routingComponents = [
   LoginPageComponent,
   HomePageComponent,
   FoodPageComponent,
   ShoppingCartPageComponent,
   AdminPageComponent,
-  LogoutPageComponent
+  LogoutPageComponent,
+  ShoppingDoneComponent
 ];

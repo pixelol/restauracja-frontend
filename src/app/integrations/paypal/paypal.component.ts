@@ -1,3 +1,4 @@
+import { LoggerService } from './../../services/logger-service/logger.service';
 import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
 import { PaypalService } from './../paypal-service/paypal.service';
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
@@ -29,12 +30,15 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
       // This function captures the funds from the transaction.
       return actions.order.capture().then((details) => {
         // This function shows a transaction success message to your buyer.
+        this.loggerService.foods.next(this.shoppingCartService.foods.getValue());
+        this.loggerService.price.next(this.shoppingCartService.price.getValue());
         alert('Transaction completed');
       });
     }
   };
 
-  constructor(private paypalService: PaypalService, private shoppingCartService: ShoppingCartService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private paypalService: PaypalService, private shoppingCartService: ShoppingCartService, private loggerService: LoggerService) {
     this.addScript = false;
     shoppingCartService.price.subscribe(e => {
       this.price = e;

@@ -1,1 +1,20 @@
-<p>shopping-done works!</p>
+<div *ngIf='userInfo' style="text-align:center">
+    <h2>Shopping done</h2>
+
+    <div *ngIf='foods'>
+        <ng-container *ngFor='let food of foods'>
+            <li>
+                type: {{food.type}} |
+                name: {{food.name}} |
+                price: {{food.price}} |
+                <button (click)='removeFoodFromShoppingCart(food)'>Remove</button>
+            </li>
+            <h4>Total price: {{price}}</h4>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf='!userInfo'>
+    <h2>Shopping done page</h2>
+    <h3>Sign in to use the application.</h3>
+</div>

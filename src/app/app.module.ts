@@ -16,7 +16,6 @@ import { ShoppingDoneComponent } from './pages/shopping-done/shopping-done.compo
     AppComponent,
     routingComponents,
     PaypalComponent,
-    ShoppingDoneComponent,
   ],
   imports: [
     BrowserModule,
