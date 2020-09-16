@@ -1,9 +1,11 @@
+import { ShoppingHistory } from './../../models/shopping-history';
 import { LoggerService } from './../../services/logger-service/logger.service';
 import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
 import { UserInfo } from './../../models/user-info';
 import { UserService } from './../../services/user-service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Food } from 'src/app/models/food';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-shopping-done',
@@ -12,8 +14,7 @@ import { Food } from 'src/app/models/food';
 })
 export class ShoppingDoneComponent implements OnInit {
 
-  foods: Array<Food> = [];
-  price = '0.00';
+  shoppingHistory: Array<ShoppingHistory> = [];
 
   userInfo: UserInfo;
 
@@ -21,16 +22,18 @@ export class ShoppingDoneComponent implements OnInit {
     userService.userRoleObs.subscribe(e => {
       this.userInfo = e;
     });
-    loggerService.foods.subscribe(e => {
-      this.foods = e;
-    });
-    loggerService.price.subscribe(e => {
-      this.price = e;
+    loggerService.httpGetAllShoppingHistory().subscribe(e => {
+      this.shoppingHistory = e;
+      console.log(this.shoppingHistory);
     });
 
   }
 
   ngOnInit(): void {
+  }
+
+  deleteFromHistory(shoppingHistory: ShoppingHistory): void {
+    this.loggerService.httpDeleteShoppingHistory(shoppingHistory).subscribe();
   }
 
 }

@@ -1,3 +1,5 @@
+import { ShoppingHistory } from './../../models/shopping-history';
+import { LoggerService } from './../../services/logger-service/logger.service';
 import { User } from './../../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from './../../services/user-service/user.service';
@@ -13,7 +15,7 @@ export class HomePageComponent implements OnInit {
 
   userInfo: UserInfo;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private loggerService: LoggerService) {
     userService.userRoleObs.subscribe(e => {
       this.userInfo = e;
     });

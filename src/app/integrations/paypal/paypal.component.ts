@@ -1,3 +1,7 @@
+import { element } from 'protractor';
+import { FoodService } from './../../services/food-service/food.service';
+import { ShoppingHistory } from './../../models/shopping-history';
+import { Food } from './../../models/food';
 import { LoggerService } from './../../services/logger-service/logger.service';
 import { ShoppingCartService } from './../../services/shopping-cart-service/shopping-cart.service';
 import { PaypalService } from './../paypal-service/paypal.service';
@@ -30,15 +34,38 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
       // This function captures the funds from the transaction.
       return actions.order.capture().then((details) => {
         // This function shows a transaction success message to your buyer.
-        this.loggerService.foods.next(this.shoppingCartService.foods.getValue());
-        this.loggerService.price.next(this.shoppingCartService.price.getValue());
+
+        let saveFood = '';
+        const savePrice = this.shoppingCartService.price.getValue();
+
+        this.shoppingCartService.foods.subscribe(e => {
+          const food: Food[] = e;
+          food.forEach(signleElement => {
+            saveFood += signleElement.name + ',';
+          });
+        });
+
+        const singleHistory: ShoppingHistory = { id: 0, food: saveFood, price: savePrice };
+        this.loggerService.httpCreateShoppingHistory(singleHistory).subscribe();
+
+        this.shoppingCartService.foods.subscribe(e => {
+          const food: Array<Food> = e;
+          food.forEach(signleElement => {
+            signleElement.status = 'kupiony';
+            this.foodService.HttpUpdateFood(signleElement).subscribe();
+          });
+        });
+
+        this.shoppingCartService.foods.next([]);
+        this.shoppingCartService.price.next('0.00');
+
         alert('Transaction completed');
       });
     }
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(private paypalService: PaypalService, private shoppingCartService: ShoppingCartService, private loggerService: LoggerService) {
+  constructor(private paypalService: PaypalService, private shoppingCartService: ShoppingCartService, private loggerService: LoggerService, private foodService: FoodService) {
     this.addScript = false;
     shoppingCartService.price.subscribe(e => {
       this.price = e;
