@@ -88,7 +88,8 @@ export class PaypalComponent implements OnInit, AfterViewChecked {
     return new Promise((resolve, reject) => {
       const scripttagElement = document.createElement('script'); // <script src =""></script>
       scripttagElement.src = 'https://www.paypal.com/sdk/js?client-id=' +
-        ''; /* <=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=# USUŃ */
+        '' +
+        '&currency=PLN'; /* <=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=# USUŃ */
       scripttagElement.onload = resolve;
       document.body.appendChild(scripttagElement);
     });
